@@ -1,0 +1,38 @@
+//constants for pins
+const int carRed = 13;
+const int carYellow  = 12;
+const int carGreen = 11;
+const int pedeRed = 10;
+const int pedeGreen = 9;
+const int btn     = 2;
+int estBtn     = 0;
+
+//Set the type of pins
+void setup(){
+  pinMode(carRed, OUTPUT);
+  pinMode(carYellow,  OUTPUT);
+  pinMode(carGreen, OUTPUT);
+  pinMode(pedeRed, OUTPUT);
+  pinMode(pedeGreen, OUTPUT);
+  pinMode(btn,     INPUT);
+}
+
+//Start of program
+void loop(){
+  digitalWrite(carGreen, HIGH);
+  digitalWrite(pedeGreen, HIGH);
+  estBtn = digitalRead(btn);
+  
+  if(estBtn == HIGH){
+    digitalWrite(carGreen, LOW);
+    digitalWrite(carYellow, HIGH);
+  	delay(2000); // Wait for 2000 millisecond(s)
+    digitalWrite(carYellow, LOW);
+    digitalWrite(carRed, HIGH);
+    digitalWrite(pedeRed, LOW);
+    digitalWrite(pedeGreen, HIGH);
+    delay(10000); // Wait for 10000 millisecond(s)
+    digitalWrite(carRed, LOW);
+	digitalWrite(pedeGreen, LOW);
+  }
+}
